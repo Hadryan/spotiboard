@@ -1,0 +1,70 @@
+$breakpoint-tablet: 768px;
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  padding-top: 6rem;
+  padding-bottom: 8rem;
+  min-height: 100vh;
+  max-width: 100vw;
+
+  .list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+
+    .playlist {
+      display: flex;
+      flex-direction: row;
+      cursor: pointer;
+      transition: 0.2s;
+      border-radius: 30px;
+      animation: fadeIn 0.4s;
+      margin-bottom: 2rem;
+
+      &:hover {
+        background-color: rgb(51, 51, 51);
+        opacity: 0.9;
+      }
+    }
+
+    .playlistCover {
+      width: 80px;
+      height: 80px;
+    }
+
+    .name {
+      font-size: 1.6rem;
+      align-self: center;
+      font-weight: 600;
+      word-wrap: break-word;
+      padding-left: 1rem;
+      max-width: 10.3rem;
+    }
+  }
+}
+
+@media (min-width: $breakpoint-tablet) {
+  .container {
+    .list {
+      .playlist {
+        padding: 1.4rem;
+        margin-bottom: 1rem;
+      }
+      .name {
+        font-size: 2rem;
+        max-width: 100%;
+      }
+    }
+  }
+
+}

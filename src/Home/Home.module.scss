@@ -1,0 +1,44 @@
+@keyframes fadeIn {
+  0% {opacity:0;}
+  40% { opacity:0; }
+  100% {opacity:1;}
+  }
+
+.container {
+  min-height: 70vh;
+  padding-top: 8rem;
+  padding-bottom: 7rem;
+  background-color: rgb(24, 24, 24);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  margin: 0;
+  padding: 0;
+}
+
+.linkButton {
+  border-style: none;
+  background-color: rgb(65, 62, 62);
+  margin-bottom: 2rem;
+  padding: 1rem 5rem;
+  font-size: 2rem;
+  border-radius: 35px;
+  cursor: pointer;
+  color: white;
+  font-family: inherit;
+  font-weight: 600;
+  animation: fadeIn ease 2.7s;
+
+  &:hover {
+    opacity: 0.9;
+    background-color: rgb(150, 142, 142);
+    transition: 0.3s;
+  }
+
+  &:focus, :active {
+    outline: none;
+  }
+}

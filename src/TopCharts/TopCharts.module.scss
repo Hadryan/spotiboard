@@ -1,0 +1,145 @@
+$font-stack:'Raleway', sans-serif;
+$breakpoint-tablet: 769px;
+$active-color: #3ab954;
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.title {
+  padding: 0 0 0.7rem 0;
+  margin: 0;
+  font-size: 3rem;
+}
+
+.description {
+  display: flex;
+  text-align: center;
+  align-self: center;
+  justify-self: center;
+  padding: 0 0 2.5rem 0;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+@media (min-width: $breakpoint-tablet) {
+  .description {
+    padding: 0 0 5rem 0;
+    font-size: 1rem;
+  }
+}
+
+.typeContainer {
+
+  .typeButton {
+    border-style: none;
+    outline: none;
+    color: white;
+    cursor: pointer;
+    background-color: transparent;
+    font-size: 2rem;
+    font-weight: 700;
+    font-family: $font-stack;
+    padding: 0 1rem;
+    position: relative;
+
+    &:active, :focus {
+      outline: none;
+      background-color: transparent;
+    }
+  }
+
+  .typeButtonActive {
+    @extend .typeButton;
+    color: $active-color;
+
+    &:active, :focus {
+      outline: none;
+    }
+  }
+}
+
+@media (min-width: $breakpoint-tablet) {
+  .typeContainer {
+    .typeButton {
+      padding: 0 3rem;
+
+
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+  }
+}
+
+.termContainer {
+  padding: 1rem;
+
+  .termButton {
+    color: white;
+    border-style: none;
+    outline: none;
+    padding: 0 0.6rem;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 600;
+    font-family: $font-stack;
+    position: relative;
+
+    &:focus, :active {
+      outline: none;
+    }
+  }
+}
+@media (min-width: $breakpoint-tablet) {
+  .termContainer {
+    padding: 1.4rem 0 5rem 0;
+
+    .termButton {
+      padding: 0 5rem;
+      font-size: 1.4rem;
+    }
+  }
+}
+
+.termTextActive {
+  text-decoration: underline;
+}
+
+.termTextInactive {
+  text-decoration: none;
+  position: relative;
+  border-style: none;
+
+  &:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 1px;
+    left: 0;
+    background-color: white;
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.14s ease-in-out;
+  }
+
+  &:hover:before {
+    visibility: visible;
+    transform: scaleX(1);
+  }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 7rem 0rem 8rem 0rem;
+  min-height: 100vh;
+}

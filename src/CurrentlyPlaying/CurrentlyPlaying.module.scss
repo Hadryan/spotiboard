@@ -1,0 +1,208 @@
+$breakpoint-tablet: 768px;
+$active-color: #3ab954;
+
+.container {
+  display: flex;
+  flex-direction: row;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  height: 4.5rem;
+  min-width: 100vw;
+  text-align: center;
+  align-items: center;
+  background-color: rgb(40, 40, 40);
+}
+
+
+@media (min-width: $breakpoint-tablet) {
+  .container {
+    height: 6.5rem;
+  }
+}
+
+.controlWrapper {
+  flex-direction: column;
+  margin-left: 0rem;
+  width: 70vw;
+}
+
+@media (min-width: $breakpoint-tablet) {
+  .controlWrapper {
+    margin-left: -5%;
+  }
+}
+
+.playerControls {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  justify-content: center;
+  padding-top: 0.35rem;
+}
+
+.notPlaying {
+  display: flex;
+  justify-self: center;
+  align-self: center;
+  margin: 0;
+  font-size: 1rem;
+}
+
+.navButton {
+  padding: 0 0.5rem 0rem 0.5rem;
+  margin: 0;
+  background-color: transparent;
+  border: none;
+  opacity: 0.85;
+  flex-direction: row;
+  -webkit-tap-highlight-color: transparent;
+
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.1) perspective(1px);
+    opacity: 1;
+  }
+
+  &:active {
+    opacity: 0.3;
+    outline: 0;
+  }
+
+  &:focus {
+    outline: 0;
+  }
+
+  .playPauseButton {
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    height: 40px;
+    width: 40px;
+    filter: invert(1);
+  }
+
+  .navImg {
+    @extend .playPauseButton;
+    height: 35px;
+    width: 35px;
+    filter: invert(1);
+  }
+}
+
+@media (min-width: $breakpoint-tablet) {
+  .navButton {
+    padding: 0rem 1rem 0.4rem 1rem;
+
+    .playPauseButton {
+      height: 50px;
+      width: 50px;
+    }
+    
+    .navImg {
+      height: 35px;
+      width: 35px;
+
+    }
+  }
+};
+
+.shuffleButton {
+  height: 25px;
+  width: 30px;
+  filter: invert(1);
+}
+
+.shuffleActive {
+  @extend .shuffleButton;
+  filter: invert(65%) sepia(12%) saturate(2315%) hue-rotate(80deg) brightness(90%) contrast(89%);
+}
+
+.repeatButton {
+  height: 25px;
+  width: 30px;
+  filter: invert(1);
+}
+
+.repeatActive {
+  @extend .repeatButton;
+  filter: invert(65%) sepia(12%) saturate(2315%) hue-rotate(80deg) brightness(90%) contrast(89%);
+}
+
+.albumCover {
+  padding: 0 1rem 0 1rem;
+  height: 50px;
+  width: 50px;
+}
+
+@media (min-width: $breakpoint-tablet) {
+  .albumCover {
+    height: 75px;
+    width: 75px;
+  }
+}
+
+
+@keyframes marquee {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+.titleWrapper {
+  display: none;
+}
+
+@media (min-width: $breakpoint-tablet) {
+  .titleWrapper {
+    display: block;
+    flex-direction: row;
+    text-align: left;
+    width: 15%;
+  
+    .title {
+      padding: 0;
+      margin: 0;
+      min-width: 0;
+      font-size: 1rem;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      padding-bottom: 0.4rem;
+    }
+  
+    .artists {
+      padding: 0;
+      margin: 0;
+      opacity: 0.7;
+      min-width: 0;
+      font-size: 0.7rem;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+  }
+};
+
+.timeWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  .time {
+    font-weight: 400;
+    padding: 0;
+    margin: 0;
+    font-size: 0.8rem;
+    min-width: 2rem;
+  }
+}
+
+@media (min-width: $breakpoint-tablet) {
+  .timeWrapper {
+    .time {
+      font-size: 1rem;
+    }
+  }
+}

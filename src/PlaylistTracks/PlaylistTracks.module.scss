@@ -1,0 +1,161 @@
+$breakpoint-tablet: 769px;
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.container {
+  min-height: 180vw;
+  padding: 7rem 0 6rem 0;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: $breakpoint-tablet) {
+  .container {
+    min-height: 100vh;
+  }
+}
+
+.analysisContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.3s;
+  padding-bottom: 4rem;
+
+  .range {
+    width: 70%;
+    align-self: center;
+    margin-bottom: 1.3rem;
+  }
+
+  .description {
+    font-size: 1.4rem;
+    text-align: center;
+    padding-bottom: 0.2rem;
+  }
+}
+
+@media (min-width: $breakpoint-tablet) {
+  .analysisContainer {
+    .range {
+      width: 50%;
+    }
+  }
+
+}
+
+.tracksContainer {
+  display: flex;
+  flex-direction: column;
+  animation: fadeIn 0.3s;
+  list-style: none;
+  align-items: flex-start;
+  padding-left: 5%;
+
+  .track {
+    display: flex;
+    align-content: flex-start;
+    padding-bottom: 0.6rem;
+
+    .albumCover {
+      align-self: center;
+      width: 46px;
+      height: 46px;
+      border-radius: 5px;
+    }
+    .name {
+      align-self: center;
+      padding-left: 1rem;
+      font-size: 1rem;
+      font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 30vw;
+    }
+    .artists {
+      align-self: center;
+      padding-left: 1rem;
+      font-size: 0.6rem;
+      font-weight: 500;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 30vw;
+    }
+
+    @media (min-width: $breakpoint-tablet) {
+      .albumCover {
+        width: 80px;
+        height: 80px;
+      }
+    }
+  }
+}
+
+@media (min-width: $breakpoint-tablet) {
+  .tracksContainer {
+    .track {
+      padding-left: 20%;
+      .name {
+        font-size: 1.7rem;
+      }
+      .artists {
+        font-size: 0.8rem;
+      }
+    }
+  }
+
+}
+
+.preview {
+  display: flex;
+  justify-content: center;
+}
+
+.playlistInfo {
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+  justify-self: center;
+  justify-content: center;
+  padding-bottom: 2rem;
+
+  .playlistCover {
+    height: 7rem;
+    width: 7rem;
+  }
+
+  .playlistName {
+    display: inline-block;
+    align-self: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    font-weight: 600;
+    word-wrap: break-word;
+    padding-left: 1rem;
+    width: 140px;
+  }
+
+
+  @media (min-width: $breakpoint-tablet) {
+    .playlistCover {
+      padding-right: 2rem;
+      align-self: center;
+      height: 10rem;
+      width: 10rem;
+    }
+    .playlistName {
+      width: inherit;
+      font-size: 2.5rem;
+    }
+  }
+}

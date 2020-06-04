@@ -1,0 +1,203 @@
+$breakpoint-tablet: 769px;
+$active-color: #3ab954;
+$font-stack:'Raleway', sans-serif;
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.artists {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  animation: fadeIn 0.6s ease-in-out;
+  width: 95vw;
+}
+
+.artistsHidden {
+  display: none;
+}
+
+.artist {
+  display: flex;
+  flex-direction: row;
+  align-content: flex-start;
+  align-items: center;
+  padding: 1rem 0 1rem 0.4rem;
+  min-width: 90%;
+  max-width: 90%;
+  transition: 0.2s;
+
+  .rank {
+    font-weight: 600;
+    font-size: 1rem;
+    padding-left: 0.3rem;
+    width: 10px;
+  }
+  .infoContainer {
+    min-width: 70%;
+  }
+  .name {
+    color: inherit;
+    display: inline-block;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 90%;
+  }
+
+  .genres {
+    margin: 0;
+    display: inline-block;
+    padding: 0;
+    font-size: 0.7rem;
+    font-weight: 300;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 90%;
+  }
+
+  .artistPicture {
+    padding: 0 1rem 0 1rem;
+    width: 45px;
+    height: 45px;
+  }
+
+  input[type=checkbox] {
+    display: inline-block;
+    cursor: pointer;
+    min-height: 1rem;
+    min-width: 1rem;
+    margin-left: auto;
+    margin-right: 6%;
+  }
+}
+
+@media (min-width: $breakpoint-tablet) {
+  .artists {
+    width: 60vw;
+  }
+
+  .artist {
+    min-width: 100%;
+
+    &:hover {
+      background-color: rgb(51, 51, 51);
+      opacity: 0.9;
+      border-radius: 5px;
+    }
+
+    .name {
+      font-size: 1.6rem;
+      width: 70%;
+    }
+
+    .genres {
+      font-size: 1rem;
+      width: 70%;
+    }
+
+    .artistPicture {
+      width: 64px;
+      height: 64px;
+    }
+
+    .rank {
+      font-size: 1.5rem;
+      padding-left: 2rem;
+      padding-right: 1rem;
+    }
+
+    input[type=checkbox] {
+      min-height: 1.5rem;
+      min-width: 1.5rem;
+      margin-right: 8%;
+    }
+  }
+}
+
+.submitHidden {
+  display: none;
+}
+
+.submitButton {
+  display: block;
+  font-family: $font-stack;
+  font-size: 1rem;
+  padding: 0.3rem 0.8rem;
+  font-weight: 700;
+  transition: 0.4s;
+  background-color: $active-color;
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 3rem;
+  transition: background-color 150ms ease-in-out;
+}
+
+.submitDisabled {
+  @extend .submitButton;
+  background-color: darkgray;
+  color: gray;
+}
+
+.submitEnabled {
+  @extend .submitButton;
+}
+
+.successMessageContainer {
+  height: 2rem;
+  text-align: center;
+  padding-bottom: 1rem;
+
+
+  .successMessage {
+    color: white;
+    font-size: 2rem;
+    text-align: center;
+    animation: fadeIn 0.3s ease-in-out;
+  }
+}
+
+
+.submitContainer {
+  animation: fadeIn 0.6s ease-in-out;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 1rem;
+
+  .submitDescription {
+    display: flex;
+    font-size: 0.8rem;
+    padding-right: 1rem;
+  }
+}
+
+@media (min-width: $breakpoint-tablet) {
+  .submitContainer {
+    justify-content: center;
+
+    .submitDescription {
+      font-size: 1rem;
+      padding-right: 3rem;
+    }
+  }
+
+}
+
+.submitContainerHidden {
+  display: none;
+}

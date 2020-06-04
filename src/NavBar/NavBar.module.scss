@@ -1,0 +1,38 @@
+.container {
+  position: fixed;
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  transition: 0.3s;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(51, 51, 51);
+  z-index: 2;
+}
+
+.title {
+  padding: 1rem;
+  margin: 0;
+  transition: 0.3s;
+}
+
+.title-big {
+  @extend .title;
+  font-size: 2rem;
+}
+
+.title-small {
+  @extend .title;
+  font-size: 1.3rem;
+}
+
+.container-big {
+  @extend .container;
+  height: 5rem;
+}
+
+.container-small {
+  @extend .container;
+  height: 3rem;
+}
