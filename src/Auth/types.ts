@@ -1,6 +1,6 @@
 export interface AuthState {
   isLoggedIn: boolean;
-  accessTokenValid: boolean;
+  accessTokenValid: boolean | null;
 }
 
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';

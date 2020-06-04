@@ -9,7 +9,7 @@ import {
 
 const initialState: AuthState = {
   isLoggedIn: false,
-  accessTokenValid: false,
+  accessTokenValid: null,
 };
 
 export default function AuthReducer(state = initialState, action: AuthActionTypes): AuthState {

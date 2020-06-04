@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { logout } from '../../../Auth/actions';
-import history from '../../../history';
 import styles from './Menu.module.scss';
 
 type BurgerProps = {
@@ -15,18 +15,27 @@ const Menu = ({ open }: BurgerProps): JSX.Element => {
 
   return (
     <nav className={menuStyle}>
-      <button type="button" className={styles.menuItem} onClick={(): void => history.push('/home')}>
-        <span className={styles.menuText}>Home</span>
-      </button>
-      <button type="button" className={styles.menuItem} onClick={(): void => history.push('/topcharts')}>
-        <span className={styles.menuText}>Top Charts</span>
-      </button>
-      <button type="button" className={styles.menuItem} onClick={(): void => history.push('/playlists')}>
-        <span className={styles.menuText}>Playlist <br /> Analyzer</span>
-      </button>
-      <button type="button" className={styles.menuItem} onClick={(): any => dispatch(logout())}>
-        <span className={styles.menuText}>Logout</span>
-      </button>
+      <Link to="/home">
+        <button type="button" className={styles.menuItem}>
+          <span className={styles.menuText}>Home</span>
+        </button>
+      </Link>
+      <Link to="/topcharts">
+        <button type="button" className={styles.menuItem}>
+          <span className={styles.menuText}>Top Charts</span>
+        </button>
+      </Link>
+      <Link to="/playlists">
+        <button type="button" className={styles.menuItem}>
+          <span className={styles.menuText}>Playlist <br /> Analyzer</span>
+        </button>
+      </Link>
+      <Link to="/">
+        <button type="button" className={styles.menuItem} onClick={(): any => dispatch(logout())}>
+          <span className={styles.menuText}>Logout</span>
+        </button>
+      </Link>
+
     </nav>
   );
 };

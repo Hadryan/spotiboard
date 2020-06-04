@@ -1,6 +1,6 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { Router, Switch, Route } from 'react-router-dom';
+import { HashRouter as Router, Switch, Route } from 'react-router-dom';
 import { store } from './store/store';
 import history from './history';
 
@@ -16,16 +16,14 @@ import styles from './App.module.scss';
 const App: React.FC = (): JSX.Element => (
   <Provider store={store}>
     <div className={styles.container}>
-      <Router history={history}>
+      <Router basename="/">
         <Switch>
+          <Route path="/:access_token(access_token=.*)" component={Callback} />
           <Route exact path="/">
             <Landing />
           </Route>
           <Route exact path="/home">
             <Home />
-          </Route>
-          <Route exact path="/callback">
-            <Callback />
           </Route>
           <Route exact path="/topcharts">
             <TopCharts />

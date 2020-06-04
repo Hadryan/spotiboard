@@ -1,8 +1,8 @@
 /* eslint-disable prefer-destructuring */
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import { useTypedSelector } from '../store/rootReducer';
-import history from '../history';
 import { fetchTracksAnalysis, clearState } from './actions';
 import styles from './PlaylistTracks.module.scss';
 import LoadingSpinner from '../LoadingSpinner';
@@ -17,6 +17,17 @@ const PlaylistTracks: React.FC = (): JSX.Element => {
   const playlistImgUrl = useTypedSelector((state) => state.playlists.currentPlaylistImgUrl);
   const tracks = useTypedSelector((state) => state.playlistTracks.tracks);
   const tracksAnalysisData = useTypedSelector((state) => state.playlistTracks.analysis);
+  const accessTokenValid = useTypedSelector((state) => state.auth.accessTokenValid);
+
+  useEffect(() => {
+    dispatch(fetchProfile());
+    window.scrollTo(0, 0);
+    if (currentlyPlayingId) dispatch(fetchTracksAnalysis(currentlyPlayingId));
+  }, []);
+
+  if (accessTokenValid !== null && !accessTokenValid) return <Redirect to="/" />;
+
+  if (currentlyPlayingId !== null && !currentlyPlayingId) return <Redirect to="/playlists" />;
 
   window.onpopstate = (): any => {
     window.scrollTo(0, 0);
@@ -48,7 +59,7 @@ const PlaylistTracks: React.FC = (): JSX.Element => {
             let url = 'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D';
             if (track.album_pictures.length !== 0) url = track.album_pictures[track.album_pictures.length - 1].url;
             return (
-              <li className={styles.track}>
+              <li className={styles.track} key={track.id}>
                 <img className={styles.albumCover} src={url} alt="album cover" />
                 <span className={styles.name}>{track.name}</span>
                 <span className={styles.artists}>{track.artists.join(', ')}</span>
@@ -60,14 +71,6 @@ const PlaylistTracks: React.FC = (): JSX.Element => {
 
     );
   }
-
-  useEffect(() => {
-    dispatch(fetchProfile());
-    window.scrollTo(0, 0);
-    if (!currentlyPlayingId) history.replace('/playlists');
-    if (currentlyPlayingId) dispatch(fetchTracksAnalysis(currentlyPlayingId));
-  }, []);
-
 
   return (
     <div>

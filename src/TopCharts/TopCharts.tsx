@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+import { useTypedSelector } from '../store/rootReducer';
 import NavBar from '../NavBar';
 import TopArtists from './TopArtists';
 import TopTracks from './TopTracks';
@@ -13,6 +15,7 @@ const TopCharts: React.FC = (): JSX.Element => {
   const dispatch = useDispatch();
   const [type, setType] = useState('tracks');
   const [term, setTerm] = useState('short_term');
+  const accessTokenValid = useTypedSelector((state) => state.auth.accessTokenValid);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -23,6 +26,8 @@ const TopCharts: React.FC = (): JSX.Element => {
     dispatch(checkToken());
     dispatch(fetchProfile());
   }, []);
+
+  if (accessTokenValid !== null && !accessTokenValid) return <Redirect to="/" />;
 
   window.onpopstate = (): void => {
     window.scrollTo(0, 0);

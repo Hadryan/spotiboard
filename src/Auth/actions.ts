@@ -5,7 +5,6 @@ import {
   CHECK_TOKEN,
   AuthActionTypes,
 } from './types';
-import history from '../history';
 import { config, authorizeUser } from '../utils';
 import { AppThunk } from '../store/store';
 
@@ -27,7 +26,6 @@ export const login = (): void => {
 
 export const logout = (): AuthActionTypes => {
   if (localStorage.getItem('accessToken')) localStorage.removeItem('accessToken');
-  history.replace('/');
   return {
     type: LOGOUT,
     isLoggedIn: false,

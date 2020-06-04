@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { useTypedSelector } from '../store/rootReducer';
 import { checkToken, logout } from '../Auth/actions';
 import { getAccessToken } from '../utils';
@@ -14,6 +14,7 @@ import styles from './Home.module.scss';
 const Home: React.FC = (): JSX.Element => {
   const dispatch = useDispatch();
   const isInitialLoaded = useTypedSelector((state) => state.profile.initialLoad);
+  const accessTokenValid = useTypedSelector((state) => state.auth.accessTokenValid);
 
   useEffect(() => {
     if (!getAccessToken()) {
@@ -27,6 +28,8 @@ const Home: React.FC = (): JSX.Element => {
       dispatch(initialLoad());
     }
   }, []);
+
+  if (accessTokenValid !== null && !accessTokenValid) return <Redirect to="/" />;
 
   return (
     <div>

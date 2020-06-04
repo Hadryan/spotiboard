@@ -4,7 +4,7 @@ export const config = {
   SPOTIFY_AUTHORIZE_URL: 'https://accounts.spotify.com/authorize',
   SPOTIFY_AUTH_SCOPES: 'user-read-currently-playing playlist-read-private user-top-read user-read-private playlist-modify-public playlist-modify-private user-modify-playback-state user-read-playback-state playlist-read-collaborative',
   CLIENT_ID: '25f8a5dace1c42e2a375b3a979c89ff5',
-  CALLBACK_URL: `${window.location.origin}/callback`,
+  CALLBACK_URL: `${window.location.origin}/#/callback`,
   DEFAULT_COUNTRY_CODE: 'US',
 };
 

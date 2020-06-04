@@ -1,27 +1,29 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { saveLogin } from './actions';
-import history from '../history';
 import { loginSuccess, loginFailure } from '../Auth/actions';
-
-import styles from './Callback.module.scss';
 
 const Callback: React.FC = (): JSX.Element => {
   const dispatch = useDispatch();
+  const history = useHistory();
+  let redirect;
 
   useEffect(() => {
     const valid = saveLogin();
     if (!valid) {
-      history.replace('/');
-      dispatch(loginFailure);
+      dispatch(loginFailure());
+      history.push('/');
     } else {
-      history.replace('/home');
-      dispatch(loginSuccess);
+      dispatch(loginSuccess());
+      history.push('/home');
     }
   }, []);
 
   return (
-    <h1 className={styles.placeholder}>Loading...</h1>
+    <div>
+      {redirect}
+    </div>
   );
 };
 
